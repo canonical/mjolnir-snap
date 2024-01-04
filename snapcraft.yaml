@@ -32,6 +32,7 @@ parts:
         source-type: git
         override-build: |
             npm install -g yarn
+            npm install @matrix-org/matrix-sdk-crypto-nodejs
             yarn install
             yarn build
             mv lib $CRAFT_PRIME/mjolnir
