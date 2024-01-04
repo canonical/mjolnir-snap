@@ -16,7 +16,7 @@ apps:
 parts:
     node:
         plugin: dump
-        source: https://nodejs.org/dist/v18.19.0/node-v18.19.0-linux-x64.tar.xz
+        source: https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
         stage:
             - bin
             - include
