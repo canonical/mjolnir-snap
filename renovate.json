@@ -1,5 +1,22 @@
 {
   "extends": ["config:base"],
-  "snapcraft": true
+  "packageRules": [
+    {
+      "matchDatasources": ["github-releases"],
+      "matchPackagePatterns": ["matrix-org/mjolnir"],
+      "extractVersion": "^v?(?<version>[0-9]+\\.[0-9]+\\.[0-9]+)$",
+      "fileMatch": ["(^|/)snapcraft\\.yaml$"],
+      "extractPackage": {
+        "fileMatch": ["(^|/)snapcraft\\.yaml$"],
+        "matchStrings": [
+          "source: (?<source>.+)",
+          "source-tag: v(?<currentValue>.+)"
+        ],
+        "depNameTemplate": "{{{ source }}}"
+      },
+      "updateTypes": ["digest"],
+      "versioning": "semver",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
 }
-
