@@ -1,22 +1,27 @@
 {
-  "extends": ["config:base"],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["(^|/)snapcraft.yaml$"],
+      "description": "Update Mjolnir",
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "source-tag: (?<currentValue>v.+)"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "matrix-org/mjolnir"
+    }
+  ],
   "packageRules": [
     {
-      "matchDatasources": ["github-releases"],
-      "matchPackagePatterns": ["matrix-org/mjolnir"],
-      "extractVersion": "^v?(?<version>[0-9]+\\.[0-9]+\\.[0-9]+)$",
-      "fileMatch": ["(^|/)snapcraft\\.yaml$"],
-      "extractPackage": {
-        "fileMatch": ["(^|/)snapcraft\\.yaml$"],
-        "matchStrings": [
-          "source: (?<source>.+)",
-          "source-tag: v(?<currentValue>.+)"
-        ],
-        "depNameTemplate": "{{{ source }}}"
-      },
-      "updateTypes": ["digest"],
-      "versioning": "semver",
-      "datasourceTemplate": "github-releases"
+      "enabled": true,
+      "matchDatasources": [
+        "github-releases"
+      ],
+      "pinDigests": true
     }
   ]
 }
