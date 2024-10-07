@@ -4,7 +4,7 @@
 name: mjolnir
 summary: Mjolnir snap
 description: A moderation tool for Matrix
-version: "1.7.0"
+version: 1.8.0
 base: core22
 license: Apache-2.0
 confinement: strict
@@ -19,7 +19,7 @@ apps:
 parts:
     node:
         plugin: dump
-        source: https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
+        source: https://nodejs.org/dist/v20.2.0/node-v20.2.0-linux-x64.tar.xz
         stage:
             - bin
             - include
@@ -31,8 +31,7 @@ parts:
         source-tag: v1.8.1
         source-type: git
         override-build: |
-            npm install -g yarn
-            npm install @matrix-org/matrix-sdk-crypto-nodejs
+            npm install -g yarn@1.22.19
             yarn install
             yarn build
             mv lib $CRAFT_PRIME/mjolnir
