@@ -19,7 +19,7 @@ apps:
 parts:
     node:
         plugin: dump
-        source: https://nodejs.org/dist/v20.2.0/node-v20.2.0-linux-x64.tar.xz
+        source: https://nodejs.org/dist/v20.19.2/node-v20.19.2-linux-x64.tar.xz
         stage:
             - bin
             - include
@@ -31,7 +31,7 @@ parts:
         source-tag: v1.10.0
         source-type: git
         override-build: |
-            npm install -g yarn@1.22.19
+            npm install -g yarn@1.22.22
             yarn install
             yarn build
             mv lib $CRAFT_PRIME/mjolnir
