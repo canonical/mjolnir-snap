@@ -19,7 +19,7 @@ apps:
 parts:
     node:
         plugin: dump
-        source: https://nodejs.org/dist/v20.19.2/node-v20.19.2-linux-x64.tar.xz
+        source: https://nodejs.org/dist/v20.19.5/node-v20.19.5-linux-x64.tar.xz
         stage:
             - bin
             - include
